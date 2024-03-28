@@ -35,29 +35,15 @@ class Solution(object):
         # return res
 
 
-        count_dict = {}
         res = 0
-        k = 0
-
-        for i in range(len(nums)):
-            k += nums[i]
-
-
-            print(count_dict)
-
-            print(f'Value of k is: {k}')
-            if k == goal:
-                res += 1
-            else:
-                
+        count = {0: 1}
+        cur_sum = 0
         
-        
-
-
-            print(f'curr res is: {res}')
-            count_dict[k] += 1
-
-
+        for i in nums:
+            cur_sum += i
+            if cur_sum - goal in count:
+                res += count[cur_sum - goal]
+            count[cur_sum] = count.get(cur_sum, 0) + 1
 
         return res
 
@@ -68,12 +54,11 @@ class Solution(object):
 
 
 
-
 nums,goal = [1,0,1,0,1], 2
 
-# nums, goal = [0,0,0,0,0],0
+nums, goal = [0,0,0,0,0],0
     
-# nums,goal = [0,0,0,0,0,0,1,0,0,0], 0
+nums,goal = [0,0,0,0,0,0,1,0,0,0], 0
 
 # nums,goal = [0,0,0,0,0,0],0
 s = Solution()
